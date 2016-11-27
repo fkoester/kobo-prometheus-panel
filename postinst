@@ -84,8 +84,6 @@ npm_install() {
 install_config() {
   : {$1:?'Package name was not defined'}
   cd "/usr/share/$1/app"
-
-  cp sensorconfig_example.json /etc/prometheus-dht22-exporter/sensorconfig.json
 }
 
 add_group '{{ node_deb_group }}' ''
