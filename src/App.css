@@ -1,0 +1,31 @@
+html, body {
+  margin: 0;
+}
+
+.huge {
+  font-size: xx-large;
+}
+
+.large p {
+  font-size: x-large;
+}
+
+.group {
+  padding: 0 10px;
+  float: left;
+  border: 1px solid black;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.container {
+  width: 100%;
+  text-align: center;
+}
+
+.wallTime {
+  display: inline-block;
+  width: 90%;
+  float: unset;
+  text-align: center;
+}
