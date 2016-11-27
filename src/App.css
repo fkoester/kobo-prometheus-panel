@@ -10,30 +10,82 @@ p {
   margin: 5px 0;
 }
 
-.huge {
-  font-size: 500%;
-}
-
-.large p {
-  font-size: 300%;
-}
-
 .group {
   padding: 0 10px;
-  float: left;
+  display: inline-block;
   border: 1px solid black;
   margin: 5px;
   border-radius: 5px;
+  box-sizing: border-box;
 }
 
-.container {
-  width: 100%;
-  text-align: center;
+.primary {
+  font-size: 500%;
+}
+
+.secondary p {
+  font-size: 300%;
 }
 
 .wallTime {
-  display: inline-block;
-  width: 90%;
-  float: unset;
   text-align: center;
+}
+
+.flex-container {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -moz-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-box-align: start;
+  -moz-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+
+.flex-item {
+  -webkit-box-ordinal-group: 1;
+  -moz-box-ordinal-group: 1;
+  -webkit-order: 0;
+  -ms-flex-order: 0;
+  order: 0;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+}
+
+/*
+    Legacy Firefox implementation treats all flex containers
+    as inline-block elements.
+*/
+
+@-moz-document url-prefix() {
+  .flex-container {
+    width: 100%;
+    -moz-box-sizing: border-box;
+  }
 }

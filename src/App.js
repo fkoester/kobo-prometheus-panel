@@ -133,39 +133,42 @@ class App extends Component {
     });
   }
 
-
   render() {
     return (
       <div className="App">
-        <div className="container">
-          <div className="wallTime huge group">
+        <div className="flex-container">
+          <div className="wallTime group primary flex-item">
             <time dateTime={this.state.now.toISOString()}>{moment(this.state.now).format('LTS')}</time>
           </div>
         </div>
-        <div className="livingRoom large group">
-          <h3>Wohnzimmer</h3>
-          <p className="temperature">{ this.getTemperatureString('5') }</p>
-          <p className="relHumidity">{ this.getRelHumidityString('5') }</p>
+        <div className="flex-container">
+          <div className="livingRoom group secondary flex-item">
+            <h3>Wohnzimmer</h3>
+            <p className="temperature">{ this.getTemperatureString('5') }</p>
+            <p className="relHumidity">{ this.getRelHumidityString('5') }</p>
+          </div>
+          <div className="outdoor group secondary flex-item">
+            <h3>Außen</h3>
+            <p className="temperature">{ this.getTemperatureString('0') }</p>
+            <p className="relHumidity">{ this.getRelHumidityString('0') }</p>
+          </div>
         </div>
-        <div className="outdoor large group">
-          <h3>Außen</h3>
-          <p className="temperature">{ this.getTemperatureString('0') }</p>
-          <p className="relHumidity">{ this.getRelHumidityString('0') }</p>
-        </div>
-        <div className="office group">
-          <h3>Büro</h3>
-          <p className="temperature">{ this.getTemperatureString('4') }</p>
-          <p className="relHumidity">{ this.getRelHumidityString('4') }</p>
-        </div>
-        <div className="supplyRoom group">
-          <h3>Vorratsraum</h3>
-          <p className="temperature">{ this.getTemperatureString('3') }</p>
-          <p className="relHumidity">{ this.getRelHumidityString('3') }</p>
-        </div>
-        <div className="bedRoom group">
-          <h3>Schlafzimmer</h3>
-          <p className="temperature">{ this.getTemperatureString('2') }</p>
-          <p className="relHumidity">{ this.getRelHumidityString('2') }</p>
+        <div className="flex-container">
+          <div className="office group tertiary flex-item">
+            <h3>Büro</h3>
+            <p className="temperature">{ this.getTemperatureString('4') }</p>
+            <p className="relHumidity">{ this.getRelHumidityString('4') }</p>
+          </div>
+          <div className="supplyRoom group tertiary flex-item">
+            <h3>Vorratsraum</h3>
+            <p className="temperature">{ this.getTemperatureString('3') }</p>
+            <p className="relHumidity">{ this.getRelHumidityString('3') }</p>
+          </div>
+          <div className="bedRoom group tertiary flex-item">
+            <h3>Schlafzimmer</h3>
+            <p className="temperature">{ this.getTemperatureString('2') }</p>
+            <p className="relHumidity">{ this.getRelHumidityString('2') }</p>
+          </div>
         </div>
         <ReactInterval enabled callback={this.update} />
       </div>
