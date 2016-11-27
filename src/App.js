@@ -106,7 +106,7 @@ class App extends Component {
       });
 
       if (timeSeries) {
-        return `${parseFloat(timeSeries.sample).toFixed(0)} g`;
+        return `${parseFloat(timeSeries.sample).toFixed(0)}`;
       }
     }
 
@@ -146,11 +146,13 @@ class App extends Component {
             <h3>Wohnzimmer</h3>
             <p className="temperature">{ this.getTemperatureString('5') }</p>
             <p className="relHumidity">{ this.getRelHumidityString('5') }</p>
+            <p className="absHumidity">{ this.getAbsHumidityString('5') } <sup>g</sup>/<sub>m&sup3;</sub></p>
           </div>
           <div className="outdoor group secondary flex-item">
             <h3>Außen</h3>
             <p className="temperature">{ this.getTemperatureString('0') }</p>
             <p className="relHumidity">{ this.getRelHumidityString('0') }</p>
+            <p className="absHumidity">{ this.getAbsHumidityString('0') } <sup>g</sup>/<sub>m&sup3;</sub></p>
           </div>
         </div>
         <div className="flex-container">
@@ -158,16 +160,19 @@ class App extends Component {
             <h3>Büro</h3>
             <p className="temperature">{ this.getTemperatureString('4') }</p>
             <p className="relHumidity">{ this.getRelHumidityString('4') }</p>
+            <p className="absHumidity">{ this.getAbsHumidityString('4') } <sup>g</sup>/<sub>m&sup3;</sub></p>
           </div>
           <div className="supplyRoom group tertiary flex-item">
             <h3>Vorratsraum</h3>
             <p className="temperature">{ this.getTemperatureString('3') }</p>
             <p className="relHumidity">{ this.getRelHumidityString('3') }</p>
+            <p className="absHumidity">{ this.getAbsHumidityString('3') } <sup>g</sup>/<sub>m&sup3;</sub></p>
           </div>
           <div className="bedRoom group tertiary flex-item">
             <h3>Schlafzimmer</h3>
             <p className="temperature">{ this.getTemperatureString('2') }</p>
             <p className="relHumidity">{ this.getRelHumidityString('2') }</p>
+            <p className="absHumidity">{ this.getAbsHumidityString('2') } <sup>g</sup>/<sub>m&sup3;</sub></p>
           </div>
         </div>
         <ReactInterval enabled callback={this.update} />
