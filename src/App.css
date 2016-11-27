@@ -27,6 +27,10 @@ p {
   font-size: 300%;
 }
 
+.tertiary p {
+  font-size: 150%;
+}
+
 .wallTime {
   text-align: center;
 }
