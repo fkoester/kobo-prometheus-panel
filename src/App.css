@@ -19,6 +19,10 @@ p {
   box-sizing: border-box;
 }
 
+sup, sub {
+  font-size: 50%;
+}
+
 .primary {
   font-size: 500%;
 }
