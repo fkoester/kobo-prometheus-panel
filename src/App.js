@@ -106,7 +106,7 @@ class App extends Component {
       });
 
       if (timeSeries) {
-        return `${parseFloat(timeSeries.sample).toFixed(0)}`;
+        return `${parseFloat(timeSeries.sample).toFixed(1)}`;
       }
     }
 
