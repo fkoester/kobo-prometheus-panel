@@ -2,6 +2,14 @@ html, body {
   margin: 0;
 }
 
+h3 {
+  margin: 5px 0;
+}
+
+p {
+  margin: 5px 0;
+}
+
 .huge {
   font-size: xx-large;
 }
