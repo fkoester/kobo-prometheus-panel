@@ -11,11 +11,11 @@ p {
 }
 
 .huge {
-  font-size: xx-large;
+  font-size: 500%;
 }
 
 .large p {
-  font-size: x-large;
+  font-size: 300%;
 }
 
 .group {
