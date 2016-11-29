@@ -5,6 +5,8 @@ import moment from 'moment';
 import momentLocale from 'moment/locale/de';
 import './App.css';
 
+const TIMEOUT = 2 * 60 * 1000; // 2 minutes
+
 function parseMetrics(plainTextMetrics) {
   const metrics = {};
 
@@ -45,7 +47,7 @@ class App extends Component {
     super(props);
     this.state = {
       now: new Date(),
-      lastUpdateTimestamp: 0,
+      lastUpdateTimestamp: -1,
     };
     this.update = this.update.bind(this);
     this.getTemperatureString = this.getTemperatureString.bind(this);
@@ -133,14 +135,21 @@ class App extends Component {
     });
   }
 
-  render() {
+  renderTime() {
     return (
-      <div className="App">
+      <section>
         <div className="flex-container">
           <div className="wallTime group primary flex-item">
             <time dateTime={this.state.now.toISOString()}>{moment(this.state.now).format('LTS')}</time>
           </div>
         </div>
+      </section>
+    );
+  }
+
+  renderPrometheusValues() {
+    return (
+      <section>
         <div className="flex-container">
           <div className="livingRoom group secondary flex-item">
             <h3>Wohnzimmer</h3>
@@ -175,6 +184,57 @@ class App extends Component {
             <p className="absHumidity">{ this.getAbsHumidityString('2') } <sup>g</sup>/<sub>m&sup3;</sub></p>
           </div>
         </div>
+      </section>
+    );
+  }
+
+  renderInitializationMessage() {
+    return (
+      <section>
+        <div className="flex-container">
+          <div className="initializing flex-item">
+            <h2>Lade Daten...</h2>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  renderConnectionProblemMessage() {
+    return (
+      <section>
+        <div className="flex-container">
+          <div className="connectionProblem flex-item">
+            <h2>Verbindungsfehler</h2>
+            <p>Letztes Update { moment(this.state.lastUpdateTimestamp).fromNow() }</p>
+            <p>Es gibt offenbar ein Verbindungsproblem. W-LAN aus?</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  renderDataSection() {
+    if (this.state.lastUpdateTimestamp < 0) {
+      return this.renderInitializationMessage();
+    }
+
+    if (Date.now() > (this.state.lastUpdateTimestamp + TIMEOUT)) {
+      this.renderConnectionProblemMessage();
+    }
+
+    return this.renderPrometheusValues();
+  }
+
+  render() {
+    return (
+      <div className="App">
+        {
+          this.renderTime()
+        }
+        {
+          this.renderDataSection()
+        }
         <ReactInterval enabled callback={this.update} />
       </div>
     );

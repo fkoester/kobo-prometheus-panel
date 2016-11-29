@@ -35,7 +35,7 @@ sup, sub {
   font-size: 150%;
 }
 
-.wallTime {
+.wallTime, .connectionProblem, .initializing {
   text-align: center;
 }
 
